@@ -14,7 +14,7 @@ namespace MtgoTouchUI
     {
         private IntPtr hWnd = IntPtr.Zero;
 
-        private Exception ActiveWindowChanged(IntPtr hWnd)
+        private Exception ActiveWindowChanged(bool active, IntPtr hWnd)
         {
             this.hWnd = hWnd;
 

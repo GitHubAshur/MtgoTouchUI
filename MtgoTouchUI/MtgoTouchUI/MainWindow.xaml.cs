@@ -11,19 +11,15 @@ namespace MtgoTouchUI
     public partial class MainWindow : Window
     {
         private ProcessProvider processProvider;
+        
         public MainWindow()
         {
             InitializeComponent();
         
-            action = delegate
-            {
-                Label1.Content = processProvider.GetLastWindowText();
-            };
-
             processProvider = new ProcessProvider(ActiveWindowChanged, "MTGO");
         }
 
-        private readonly Action action;
+        private Action action;
 
         private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
         {
@@ -32,8 +28,14 @@ namespace MtgoTouchUI
             this.Top = desktopWorkingArea.Top;
         }
 
-        private Exception ActiveWindowChanged(IntPtr hWnd)
+        private Exception ActiveWindowChanged(bool active, IntPtr hWnd)
         {
+            action = delegate
+            {
+                Label1.Content = processProvider.GetLastWindowText();
+                this.Visibility = active ? Visibility.Visible : Visibility.Hidden;
+            };
+
             Dispatcher.Invoke(DispatcherPriority.Normal, action);
 
             return null;

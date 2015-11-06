@@ -16,7 +16,7 @@ namespace MtgoTouchUI
         private bool loop = true;
         private IntPtr hWndLast = IntPtr.Zero;
         
-        public delegate Exception ActiveWindowChanged(IntPtr hWnd);
+        public delegate Exception ActiveWindowChanged(bool active, IntPtr hWnd);
         private delegate bool EnumThreadDelegate(IntPtr hWnd, IntPtr lParam);
 
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
@@ -42,15 +42,16 @@ namespace MtgoTouchUI
                 {
                     var processes = Process.GetProcessesByName(processName);
                     var foregroundWindow = GetForegroundWindow();
+                    var windowFound = false;
 
                     foreach (var window in processes.Select(EnumerateProcessWindowHandles).SelectMany(windows =>
                     {
                         var intPtrs = windows as IntPtr[] ?? windows.ToArray();
                         return intPtrs;
-                    }).Where(window => window == foregroundWindow).Where(window => window != hWndLast))
+                    }).Where(window => foregroundWindow != hWndLast))
                     {
                         hWndLast = window;
-                        callback(window);
+                        callback(foregroundWindow == window, window);
                     }
 
                     Thread.Sleep(150);
