@@ -1,0 +1,38 @@
+﻿<Window x:Class="MtgoTouchUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MtgoTouchUI" Height="580" Width="150" WindowStyle="None" Topmost="True"
+        Loaded="MainWindow_OnLoaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+        <Grid Row="0">
+            <Label Name="Label1" Content="Active game" />
+        </Grid>
+        <Grid Row="1">
+            <Button Content="OK" Click="ButtonBase1_OnClick"></Button>
+        </Grid>
+        <Grid Row="2">
+            <Button Content="Yield EoT" Click="ButtonBase2_OnClick"></Button>
+        </Grid>
+        <Grid Row="3">
+            <Button Content="Yes" Click="ButtonBase3_OnClick"></Button>
+        </Grid>
+        <Grid Row="4">
+            <Button Content="No" Click="ButtonBase4_OnClick"></Button>
+        </Grid>
+        <Grid Row="5">
+            <Button Content="Cancel" Click="ButtonBase5_OnClick"></Button>
+        </Grid>
+        <Grid Row="6">
+            <Button Content="Undo" Click="ButtonBase6_OnClick"></Button>
+        </Grid>
+    </Grid>
+</Window>
