@@ -51,14 +51,9 @@ namespace MtgoTouchUI
                         return intPtrs;
                     }).Where(window => foregroundWindow != hWndLast))
                     {
-                        hWndLast = window;
-
                         if (foregroundWindow != Process.GetCurrentProcess().MainWindowHandle)
                         {
-                            Console.WriteLine(foregroundWindow);
-                            Console.WriteLine(Process.GetCurrentProcess().MainWindowHandle);
-                            Console.WriteLine(foregroundWindow == window);
-                            Console.WriteLine("***");
+                            hWndLast = window;
                             callback(foregroundWindow == window, window);
                         }
                     }
