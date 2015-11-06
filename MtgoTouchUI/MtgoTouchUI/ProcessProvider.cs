@@ -51,7 +51,9 @@ namespace MtgoTouchUI
                     }).Where(window => foregroundWindow != hWndLast))
                     {
                         hWndLast = window;
-                        callback(foregroundWindow == window, window);
+                        
+                        if (window != Process.GetCurrentProcess().MainWindowHandle)
+                            callback(foregroundWindow == window, window);
                     }
 
                     Thread.Sleep(150);
