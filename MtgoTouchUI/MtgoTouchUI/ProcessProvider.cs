@@ -6,6 +6,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using WindowsInput;
 
 namespace MtgoTouchUI
@@ -53,7 +54,13 @@ namespace MtgoTouchUI
                         hWndLast = window;
 
                         if (foregroundWindow != Process.GetCurrentProcess().MainWindowHandle)
+                        {
+                            Console.WriteLine(foregroundWindow);
+                            Console.WriteLine(Process.GetCurrentProcess().MainWindowHandle);
+                            Console.WriteLine(foregroundWindow == window);
+                            Console.WriteLine("***");
                             callback(foregroundWindow == window, window);
+                        }
                     }
 
                     Thread.Sleep(150);
