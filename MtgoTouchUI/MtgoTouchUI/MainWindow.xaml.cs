@@ -53,12 +53,12 @@ namespace MtgoTouchUI
 
         private void ButtonBase3_OnClick(object sender, RoutedEventArgs e)
         {
-            processProvider.SendMessage(VirtualKeyCode.MENU, VirtualKeyCode.VK_Y);
+            processProvider.SendMessage(VirtualKeyCode.LMENU, VirtualKeyCode.VK_Y);
         }
 
         private void ButtonBase4_OnClick(object sender, RoutedEventArgs e)
         {
-            processProvider.SendMessage(VirtualKeyCode.MENU, VirtualKeyCode.VK_N);
+            processProvider.SendMessage(VirtualKeyCode.LMENU, VirtualKeyCode.VK_N);
         }
 
         private void ButtonBase5_OnClick(object sender, RoutedEventArgs e)
@@ -68,7 +68,7 @@ namespace MtgoTouchUI
 
         private void ButtonBase6_OnClick(object sender, RoutedEventArgs e)
         {
-            processProvider.SendMessage(VirtualKeyCode.CONTROL, VirtualKeyCode.VK_Z);
+            processProvider.SendMessage(VirtualKeyCode.LCONTROL, VirtualKeyCode.VK_Z);
         }
     }
 }
